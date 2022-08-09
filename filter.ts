@@ -16,25 +16,25 @@ export const debounceTransform = observableFrom
   );
 
 // https://rxmarbles.com/#distinct
-export const distinctTransform = from([].concat([0, 1, 2, 3, 4, 5]).concat([2, 3, 4]).concat([5, 6, 7, 8, 9]))
+export const distinctTransform = from(([] as Array<number>).concat([0, 1, 2, 3, 4, 5]).concat([2, 3, 4]).concat([5, 6, 7, 8, 9]))
   .pipe(
     distinct()
   );
 
 // https://rxmarbles.com/#distinctUntilChanged
 let source = {
-	user: {
-		firstName: 'John',
-		lastName: 'Doe'
-	},
-	authorities: ['USER', 'SYSTEM_ADMIN'],
-	uuid: '57b81599-ec38-4c6c-83f0-68a3f71bbee1'
+  user: {
+    firstName: 'John',
+    lastName: 'Doe'
+  },
+  authorities: ['USER', 'SYSTEM_ADMIN'],
+  uuid: '57b81599-ec38-4c6c-83f0-68a3f71bbee1'
 };
 export const distinctUntilChangedTransform = from([
   source,
-  {...source, user: null, authorities: []},
+  { ...source, user: null, authorities: [] },
   source
-  ])
+])
   .pipe(
     distinct()
   );
